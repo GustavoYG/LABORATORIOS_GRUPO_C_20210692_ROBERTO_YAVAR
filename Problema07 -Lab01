@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+int main()
+{
+    int a,b;
+    cout<<"Ingrese los valores para A y B: "<<endl;
+    cin>>a;
+    cin>>b;
+    if(a%b==0)
+        cout<<"B es divisor de A"<<endl;
+    else
+        cout<<"B no es divisor de A";
+    return 0;
+}
