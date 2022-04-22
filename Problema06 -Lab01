@@ -1,0 +1,22 @@
+#include <iostream>
+
+using namespace std;
+string binario(int n)
+{
+    string r;
+    while (n!=0){
+        r +=(n%2==0?"0":"1");
+        n /=2;
+    }
+    return r;
+}
+int main() {
+    int nro;
+    cout<<"Ingrese el numero";
+    cin>>nro;
+    if(nro>100 && nro<999){
+    cout << "Decimal: " << nro<< endl;
+    cout << "Binario: " << binario(nro) << endl;
+    }
+    return 0;
+}
