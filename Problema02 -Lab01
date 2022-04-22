@@ -1,0 +1,15 @@
+#include <iostream>
+
+using namespace std;
+int main()
+{
+string Pnombre,Apaterno,Amaterno;
+cout<<"Primer nombre: ";
+cin>>Pnombre;
+cout<<"Apellido paterno: ";
+cin>>Apaterno;
+cout<<"Apellido materno: ";
+cin>>Amaterno;
+cout<<"El correo intitucional seria: "<<Pnombre[0]<<Apaterno<<Amaterno[0]<<"@unsa.edu.pe"<<endl;
+return 0;
+}
