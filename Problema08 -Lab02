@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+ int n,m;
+ cout<<"Tabla de multiplicacion"<<endl;
+ cout<<"Ingrese numero: ";cin>>n;
+ cout<<"Ingrese cantidad de tabla: ";cin>>m;
+ for (int i=0;i<m+1;i++)
+ {
+ cout<<i<<"x"<<n<<"="<<i*n<<endl;
+ }
