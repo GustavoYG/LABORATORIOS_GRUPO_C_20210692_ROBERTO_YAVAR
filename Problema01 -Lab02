@@ -1,0 +1,12 @@
+#include <iostream>
+using namespace std;
+int main()
+{
+ int suma;
+ cout <<"Suma de enteros pares del 2 al 100" << endl;
+ for (int i=2;i<101;i++)
+ if(i%2==0)
+ suma=suma+i;
+ cout<<"La suma es: "<<suma;
+ return 0;
+}
