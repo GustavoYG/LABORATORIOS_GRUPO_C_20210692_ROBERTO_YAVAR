@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+void potencia()
+{
+ int a,b,rpta=0;
+ cout <<"Ingrese valor para A: ";cin>>a;
+ cout <<"Ingrese valor para B: ";cin>>b;
+ int x=1;
+ while (x<b){
+ if (rpta<a){
+ rpta=a*a;
+ }
+ else
+ {
+ rpta=rpta*a;
+ }
+ x++;
+ }
+ cout <<"A eleveado a B es= "<<rpta;
+}
+int main()
+{
+ potencia();
+ return 0;
+}
