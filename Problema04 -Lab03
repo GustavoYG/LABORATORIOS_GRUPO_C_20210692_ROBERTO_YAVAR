@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+void esprimo(int x)
+{
+ int valores;
+ int primo=0;
+ int div=0;
+ for(valores=1;valores<=x;valores++)
+ {
+ primo=0;
+ for(div=2;div<valores-1 && primo==0;div++)
+ {
+ if(valores%div==0) primo=1;
+ }
+ if(primo==0)
+ cout<<valores<<",";
+ }
+}
+int main()
+{
+ int x;
+ cout<<"Cantidad: ";cin>>x;
+ esprimo(x);
+ return 0;
+}
