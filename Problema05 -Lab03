@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+void sumaimpares(int x)
+{
+ int sumaimp;
+ if(x>0 && x<100 && x%2==0){
+ for (int i=1;i<x;i++){
+ if(i%2!=0){
+ sumaimp=sumaimp+i;
+ }
+ }
+ cout<<"La suma de los numeros impares es: "<<sumaimp;
+ }
+ else
+ cout<<"Valor incorrecto";
+}
+int main()
+{
+ int x;
+ cout<<"Ingrese valor par entre 1 y 100: ";cin>>x;
+ sumaimpares(x);
+}
