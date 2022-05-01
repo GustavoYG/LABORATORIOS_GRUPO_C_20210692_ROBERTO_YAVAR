@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+void calcularEdad(int aa, int ma , int da, int an, int mn, int dn)
+{
+ /*aa=año actual
+ ma=mes actual
+ da=dia actual
+ an=año naciomiento
+ mn=mes naciomiento
+ dn=dia naciomiento
+ */
+ int dia,mes;
+ if(da<dn)
+ {
+ da=da+30;
+ ma=ma-1;
+ dia=da-dn;
+ }
+ else
+ dia=da-dn;
+ if(ma<mn)
+ {
+ ma=ma+12;
+ aa=aa-1;
+ mes=ma-mn;
+ }
+ else
+ mes=ma-mn;
+ cout << "Su edad es: "<<endl;
+ cout << " Edad: " <<aa-an<< endl;
+ cout << " Mes: " << mes<< endl;
+cout << " Dia: " << dia<< endl;
+}
+int main()
+{
+ int aa,ma,da,an,mn,dn;
+ cout << "Año Actual: ";cin >> aa;
+ cout << "Mes Actual: ";cin >> ma;
+ cout << "Fecha Actual: ";cin >> da;
+ cout << "Año Nacimiento: ";cin >> an;
+ cout << "Mes de Nacimiento: ";cin >> mn;
+ cout << "Fecha de Nacimiento: ";cin >> dn;
+ calcularEdad(aa,ma,da,an,mn,dn);
+}
