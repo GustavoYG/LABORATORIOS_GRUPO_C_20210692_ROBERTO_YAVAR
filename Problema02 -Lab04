@@ -1,0 +1,29 @@
+#include "iostream"
+#include "string"
+bool buscarvalor(int v[8],int valor)
+{
+ for(int i = 0; i < 8; i++){
+    if(valor == v[i])
+    {
+        return true;
+    }
+ }
+    return false;
+}
+int main()
+{
+    int a[8],n,valor;
+    cout<<"Ingresar 8 numeros enteros: "<<endl;
+    for(int i = 0; i < 8; i++)
+    {
+        cin >>a[i];
+    }
+    cout << "Ingrese un valor a buscar en el vector: ";
+    cin >> n;
+    valor = buscarvalor(a,n);
+    if(valor)
+        cout<<"Se encontro el valor";
+    else
+        cout<<"No se encontro el valor";
+    return 0;
+}
