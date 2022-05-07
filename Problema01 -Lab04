@@ -1,0 +1,39 @@
+#include "iostream"
+#include "string"
+int main()
+{
+string Nombres[5];
+string Apellidos[5];
+string Edades[5];
+string dni[5];
+
+cout << "Por favor ingrese la siguiente información de las Personas: \n";
+for(int i = 0; i < 3; i++)
+{
+cout << "\n******* Persona " << i + 1 << "********:\n";
+cout << "Nombre: ";
+getline(cin, Nombres[i]);
+cout << "Apellido: ";
+getline(cin, Apellidos[i]);
+cout << "Edad: ";
+getline(cin, Edades[i]);
+cout << "DNI: ";
+getline(cin, dni[i]);
+}
+}
+*/
+//ejemplo2
+/*
+int main()
+{
+int edades[3][2] = {{1,2},{9,8},{14,21}};
+int filas = (sizeof(edades)/sizeof(edades[0]));
+int columnas = (sizeof(edades[0])/sizeof(edades[0][0]));
+for (int i = 0; i < filas; i++)
+{
+for (int j = 0; j < columnas; j++)
+{
+cout<<edades[i][j]<<endl;
+}
+}
+}
