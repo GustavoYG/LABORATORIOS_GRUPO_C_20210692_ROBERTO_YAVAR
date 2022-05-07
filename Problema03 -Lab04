@@ -1,0 +1,27 @@
+#include "iostream"
+#include "string"
+int sumafilapar(int matriz[][3])
+{
+    int f,c;
+    int suma = 0;
+    for(f = 0;f < 5;f += 2){
+        for(c = 0; c <3 ; c++)
+        {
+            suma += matriz[f][c];
+        }
+    }
+    return suma;
+}
+int main()
+{
+    int matriz[5][3],f,c;
+    cout<<"Rellenado matriz: "<<endl;
+    for(f = 0; f < 5; f++){
+        for(c = 0; c < 3; c++)
+        {
+        cin >> matriz[f][c];
+        }
+    }
+    cout << "La suma de las filas pares es: " << sumafilapar(matriz);
+    return 0;
+}
