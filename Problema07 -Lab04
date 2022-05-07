@@ -1,0 +1,107 @@
+#include "iostream"
+#include "string"
+#include <stdio.h>
+#include <stdlib.h>
+void llenarmatriz(int m[3][3],int f,int c)
+{
+    for (f=0;f<3;f++) {
+        for (c=0;c<3;c++) {
+            cout<<"Llenando matriz "<<"["<<f<<"]"<<"["<<c<<"]";
+            cin>>m[f][c];
+    }
+    }
+}
+void mostrarmatriz(int m[3][3],int f,int c)
+{
+   cout<<"Mostrando Matriz:"<<endl;
+    for(int i=0;i<f;i++)
+    {
+        for(int j=0;j<c;j++)
+            cout<<m[i][j]<<"\t";
+        cout<<endl;
+    }
+}
+void rotarderecha(int m[3][3],int f,int c)
+{
+    int n[3][3];
+     for (f=0; f<3; f++) {
+        for (c=0; c<3; c++) {
+            if (c == 2) {
+                n[f][0] = m[f][c];
+            } else {
+                n[f][c+1] = m [f][c];
+            }
+        }
+}
+    mostrarmatriz(n,3,3);
+}
+void rotarizquierda(int m[3][3],int f,int c)
+{
+    int n[3][3];
+     for (f=0; f<3; f++) {
+        for (c=0; c<3; c++) {
+            if (c == 0) {
+                n[f][2] = m[f][c];
+            } else {
+                n[f][c-1] = m [f][c];
+            }
+        }
+}
+
+    mostrarmatriz(n,3,3);
+}
+void rotararriba(int m[3][3],int f,int c)
+{
+    int n[3][3];
+     for (f=0; f<3; f++) {
+        for (c=0; c<3; c++) {
+            if (c == 2) {
+                n[0][f] = m[f][c];
+            } else {
+                n[f+1][c] = m [f][c];
+            }
+        }
+}
+
+    mostrarmatriz(n,3,3);
+}
+
+int main () {
+    int matriz[3][3];
+    int opc;
+    do {
+        cout<<"Ingrese opcion"<<endl;
+        cout<<"Opcion 1= Llenar Matriz"<<endl;
+        cout<<"Opcion 2= Mostrar Matriz"<<endl;
+        cout<<"Opcion 3= Mover columna hacia la derecha"<<endl;
+        cout<<"Opcion 4= Mover columna hacia la izquierda"<<endl;
+        cout<<"Opcion 5= Mover fila hacia arriba"<<endl;
+        cout<<"Opcion 6= Mover fila hacia abajo"<<endl;
+        cout<<"Opcion 7= SALIR"<<endl;
+        cin>>opc;
+        switch (opc) {
+            case 1:
+                llenarmatriz(matriz,3,3);
+            break;
+            case 2:
+                mostrarmatriz(matriz,3,3);
+            break;
+            case 3:
+                cout<<"Desplazando hacia la derecha..."<<endl;
+                rotarderecha(matriz,3,3);
+            break;
+            case 4:
+                cout<<"Desplazando hacia la izquierda..."<<endl;
+                rotarizquierda(matriz,3,3);
+            break;
+            case 5:
+                cout<<"Desplazando hacia arriba..."<<endl;
+                rotararriba(matriz,3,3);
+            default:
+                cout<<"Seleccione una opcion"<<endl;
+            break;
+        }
+    }while(opc !=7);
+    //sin terminar las 2 ultimas opciones
+    return 0;
+}
