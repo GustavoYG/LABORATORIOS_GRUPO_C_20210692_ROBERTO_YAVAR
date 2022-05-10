@@ -1,0 +1,47 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+void llenar(int *v, int n)
+{
+    cout<<"Llenando el vector\n";
+    for(int i=0;i<n;i++)
+        *(v+i)=rand()%100;
+}
+void print(int *v,int n)
+{
+    cout<<"Imprimiendo el vector\n";
+    for(int i=0;i<n;i++)
+        cout<<*(v+i)<<" ";
+    cout<<endl;
+}
+void crear(int *&v, int n)
+{
+    v=new int[n];
+}
+void borrar(int *v, int n)
+{
+    delete v;
+}
+int *producto(int *v1,int *v2,int n)
+{
+    int *vs=new int[n];
+    for(int i=0;i<n;i++)
+        *(vs+i)=*(v1+i) * *(v2+i);
+    return vs;
+}
+int main()
+{
+    srand(time(NULL));
+    for(int i=0;i<1000000;i++){
+    int *v1, *v2,*v3, n=5;
+    crear(v1,n);crear(v2,n);crear(v3,n);
+    llenar(v1,n);llenar(v2,n);
+    v3=producto(v1,v2,n);
+    print(v1,n); print(v2,n);
+    cout<<"Vector Producto:\n";
+    print(v3,n);
+    borrar(v1,n); borrar(v2,n); borrar(v3,n);
+    }
+    return 0;
+}
