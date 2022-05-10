@@ -1,0 +1,19 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+void intercambiar(int *y, int *z) {
+  int pt = *y;
+  *y = *z;
+  *z = pt;
+}
+
+int main(){
+  int a,b;
+  cout<<"Ingrese valor 1: ";cin>>a;
+  cout<<"Ingrese valor 2: ";cin>>b;
+  intercambiar(&a,&b);
+  cout<<"Ahora el valor 1 es: "<<a<<endl;
+  cout<<"Ahora el valor 2 es: "<<b<<endl;
+  return 0;
+}
