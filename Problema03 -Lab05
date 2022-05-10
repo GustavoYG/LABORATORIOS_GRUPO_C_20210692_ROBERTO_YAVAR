@@ -1,0 +1,69 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+void llenar(int *v, int n)
+{
+    cout<<"Llenando el vector ...\n";
+    for(int i=0;i<n;i++)
+        *(v+i)=rand()%100;
+}
+void print(int *v,int n)
+{
+    for(int i=0;i<n;i++)
+        cout<<*(v+i)<<" ";
+    cout<<endl;
+}
+void crear(int *&v, int n)
+{
+    v=new int[n];
+}
+void borrar(int *v, int n)
+{
+    delete v;
+}
+void eliminar(int *&v1,int n,int pos)
+{
+    for(int i=rand()%5;i<n-1;i++)
+        *(v1+i)=*(v1+i+1);
+    cout<<"V1:\n";
+    print(v1,n-1);
+}
+
+int *ordenar(int *v1,int n)
+{
+   int *v2;
+   crear(v2,n);
+   for(int i=0;i<n;i++)
+   {
+       int menor=*(v1+0);
+       int pos=0;
+       for(int j=1;j<n-i;j++)
+            if(*(v1+j)<menor)
+            {
+                menor=*(v1+j);
+                pos=j;
+            }
+       //cout<<menor<<endl;
+       for(int k=pos;k<n-1;k++)
+            *(v1+k)=*(v1+k+1);
+       *(v2+i)=menor;
+   }
+   return v2;
+}
+int main()
+{
+    int *v1;
+    for(int i=0;i<10000;i++){
+    crear(v1,5);
+    llenar(v1,5);
+    cout<<"Imprimiendo vector ..."<<endl;
+    print(v1,5);
+    cout<<"Eliminando elemeno al azar ..."<<endl;
+    eliminar(v1,5,rand()%5);
+    cout<<"Ordenando el vector ..."<<endl;
+    print(ordenar(v1,5),5);
+    }
+    return 0;
+
+}
