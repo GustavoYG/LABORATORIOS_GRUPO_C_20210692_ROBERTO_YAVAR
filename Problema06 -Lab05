@@ -1,0 +1,63 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+using namespace std;
+int resul(int(*func)(int,int), int a, int b)
+{
+    return (*func)(a,b);
+}
+
+int suma(int a, int b)
+{
+    return a+b;
+}
+
+int resta(int a, int b)
+{
+    return a-b;
+}
+int division(int a, int b)
+{
+    return a/b;
+}
+
+int multiplicacion(int a, int b)
+{
+    return a*b;
+}
+
+int main()
+{
+    int opc, a, b;
+    cout<<"Introduzca A: ";
+    cin>>a;
+    cout<<"Introduzca B: ";
+    cin>>b;
+    do {
+        cout<<"\nIngrese opcion"<<endl;
+        cout<<"Opcion 1= Sumar"<<endl;
+        cout<<"Opcion 2= Restrar"<<endl;
+        cout<<"Opcion 3= Multiplicar"<<endl;
+        cout<<"Opcion 4= Dividir"<<endl;
+        cout<<"Opcion 0= SALIR"<<endl;
+        cin>>opc;
+        switch (opc) {
+            case 1:
+                cout<<"Elresultado es= "<<resul(suma, a, b);
+            break;
+            case 2:
+                cout<<"Elresultado es= "<<resul(resta, a, b);
+            break;
+            case 3:
+                cout<<"Elresultado es= "<<resul(multiplicacion, a, b);
+            break;
+            case 4:
+                cout<<"Elresultado es= "<<resul(division, a, b);
+            break;
+            default:
+                cout<<"Seleccione una opcion"<<endl;
+            break;
+        }
+    }while(opc !=0);
+    return 0;
+}
