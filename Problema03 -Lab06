@@ -1,0 +1,49 @@
+#include <iostream>
+using namespace std;
+//ROBERTO GUSTAVO YAVAR GUILLEN
+class edad{
+public:
+	edad(double aa = 0, double ma = 0, double da=0, double an = 0, double mn = 0, double dn=0){
+		x = aa;
+		y = ma;
+		z = da;
+		a = an;
+		b = mn;
+		c = dn;
+	}
+
+	double getX(){ return x; }
+	double getY(){ return y; }
+	double getZ(){ return z; }
+	double getA(){ return a; }
+	double getB(){ return b; }
+	double getC(){ return c; }
+	double calcularedad(edad &E1);
+private:
+	double x, y,z,a,b,c;
+};
+
+double edad::calcularedad(edad &R1)
+{
+    double edad = getX() - getA();
+    if(getY() < getB())
+       edad--;
+    else if(getY() == getB() && getZ() < getC())
+            edad--;
+    cout<<"Edad= "<<edad;
+	return 0;
+}
+
+int main()
+{
+	double x, y,z,a,b,c;
+	cout << "Ingrese año actual: ";cin>>x;
+	cout << "Ingrese mes actual: ";cin>>y;
+	cout << "Ingrese dia actual: ";cin>>z;
+	cout << "Ingrese año de nacimiento: ";cin>>a;
+	cout << "Ingrese mes de nacimiento: ";cin>>b;
+	cout << "Ingrese dia de nacimiento: ";cin>>c;
+	edad E1(x,y,z,a,b,c);
+    E1.calcularedad(E1);
+	return 0;
+}
