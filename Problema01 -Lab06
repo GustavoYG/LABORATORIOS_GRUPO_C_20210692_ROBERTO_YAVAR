@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+//ROBERTO GUSTAVO YAVAR GUILLEN
+class Rectangulo{
+public:
+	Rectangulo(double xx = 0, double yy = 0){
+		x = xx;
+		y = yy;
+	}
+
+	double getX(){ return x; }
+	double getY(){ return y; }
+	double area(){ return x*y; }
+	double perimetro() { return 2*x+2*y;}
+	double mostrarArea(Rectangulo &R1);
+	double mostrarPerimetro(Rectangulo &R1);
+private:
+	double x, y;
+};
+
+double Rectangulo::mostrarArea(Rectangulo &R1)
+{
+	double  a;
+	a = R1.area();
+	cout << "El area es: " << a << endl;
+	return 0;
+}
+double Rectangulo::mostrarPerimetro(Rectangulo &R1)
+{
+	double  a;
+	a = R1.perimetro();
+	cout << "El perimetro es: " << a << endl;
+	return 0;
+}
+
+int main()
+{
+	double a, b;
+	cout << "Ingrese la longitud: ";cin>>a;
+	cout << "Ingrese ancho: ";cin>>b;
+	Rectangulo R1(a,b);
+    R1.mostrarArea(R1);
+    R1.mostrarPerimetro(R1);
+	return 0;
+}
