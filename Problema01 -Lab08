@@ -1,0 +1,225 @@
+//main.cpp
+//ROBERTO GUSTAVO YAVAR GUILLEN
+#include "Rectangulo.h"
+#include "Elipse.h"
+#include "Cuadrado.h"
+#include <iostream>
+using namespace std;
+int main()
+{
+ //
+char nombre='cuadrado';
+char color='rojo';
+float co = 1.4 ;
+//
+char nr1='rectangulo';
+char cr1='verde';
+float cor1=5.5;
+Forma f1;
+f1.imprimir(color,co,nombre);
+char nn;
+cout<<"COLOR A CAMBIAR ";cin>>nn;
+f1.ObtenerCambiarC(nn);
+Rectangulo r1;
+float L,l;
+cout<<"Lado mayor: ";cin>>L;
+cout<<"Lado menor: ";cin>>l;
+r1.imprimir(cr1,cor1,nr1,l,L);
+cout<<"Area: "<<r1.CalcularArea(l,L)<<endl;
+cout<<"Perimetro: "<<r1.CalcularPerimetro(l,L)<<endl;
+r1.CambiarT(L,l);
+//
+cout<<"ELIPSE"<<endl;
+float R,r;
+cout<<"RADIOS: ";
+cin>>R>>r;
+Elipse e1(R,r);
+e1.Area(R,r);
+cout<<endl;
+cout<<"CUADRADO"<<endl;
+cout<<"Lado: ";
+float LADO;
+cin>>LADO;
+Cuadrado c1(LADO);
+c1.imprimir('verde',4.5,'cuadradito',LADO);
+cout<<"AREA: "<<c1.CalcularArea(LADO)<<endl;
+cout<<"PERIMETRO: "<<c1.CalcularPerimetro(LADO)<<endl;
+c1.CambiarT(LADO);
+system("pause");
+return 0;
+}
+//forma.h
+#pragma once
+#include<iostream>
+using namespace std;
+class Forma
+{
+ public:
+ Forma();
+ ~Forma();
+ void imprimir(char,float,char);
+ void ObtenerCambiarC(char);
+ void CambiarCoordenadas();
+ char getN(){return nombre;}
+ float getCOR(){return coordenadas;}
+ char getC(){return color;}
+ private:
+ char color,nombre;
+ float coordenadas;
+};
+//forma.cpp
+#include "Forma.h"
+#include <iostream>
+using namespace std;
+Forma::Forma()
+{
+}
+Forma::~Forma()
+{
+}
+void Forma::imprimir(char n,float co,char c)
+{
+ cout<<"ATRIBUTOS DE LA FORMA"<<endl;
+ cout<<"COLOR: "<<c<<endl;
+ cout<<"COORDENADAS: "<<co<<endl;
+ cout<<"NOMBRE: "<<n<<endl;
+ c=getC();
+ co=getCOR();
+ n=getN();
+}
+void Forma::ObtenerCambiarC(char nn)
+{
+ cout<<"Color? "<<endl;
+ nn=getC();
+}
+void Forma::CambiarCoordenadas()
+{
+}
+//rectángulo.cpp
+#include "Rectangulo.h"
+Rectangulo::Rectangulo()
+{
+}
+Rectangulo::~Rectangulo()
+{
+}
+void Rectangulo::imprimir(char c,float cor,char n,float Lmenor,float Lmayor)
+{
+ cout<<"Atributos de RECTANGULO"<<endl;
+ cout<<"COLOR: "<<c<<endl;
+ cout<<"COORDENADAS: "<<cor<<endl;
+ cout<<"NOMBRE: "<<n<<endl;
+ cout<<"LADO MENOR: "<<Lmenor<<endl;
+ cout<<"LADO MAYOR: "<<Lmayor<<endl;
+}
+void Rectangulo::CambiarT(float l, float a)
+{
+ float C;
+ cout<<"cambiar tamaño: ";cin>>C;
+ if(C>0)
+ {
+ l=C*l;
+ a=a*C;
+ cout<<"Nueva largo: "<<l<<endl;
+ cout<<"Nuevo ancho: "<<a<<endl;
+ }
+ else
+ {
+ l=l/C;
+ a=a/C;
+ cout<<"Nueva largo: "<<l<<endl;
+ cout<<"Nuevo ancho: "<<a<<endl;
+ }
+}
+//rectángulo.h
+#pragma once
+#include "Forma.h"
+class Rectangulo: public Forma
+{
+ public:
+ Rectangulo();
+ ~Rectangulo();
+ void imprimir(char,float,char,float,float);
+ void ObtenerCambiarC();
+ float CalcularArea(float largo,float ancho){return largo*ancho;}
+ float CalcularPerimetro(float largo,float ancho){return 2*largo+2*ancho;}
+ void CambiarT(float,float);
+ private:
+ float largo,ancho;
+};
+//elipse.h
+#pragma once
+#include "Forma.h"
+class Elipse: public Forma
+{
+ private:
+ float R,r;
+ public:
+ Elipse(float,float);
+ ~Elipse();
+ float getRm(){return R;}
+ float getrm(){return r;}
+ float Area(float R,float r);
+};
+//elipse.cpp
+#include "Elipse.h"
+Elipse::Elipse(float,float)
+{
+}
+Elipse::~Elipse()
+{
+}
+float Elipse::Area(float Rm,float rm)
+{
+ Rm=getRm();
+ rm=getrm();
+ cout<<"Area= "<<(rm*Rm)*3.1416;
+}
+//cuadrado.h
+#include "Rectangulo.h"
+class Cuadrado: public Rectangulo
+{
+ public:
+ Cuadrado(float L);
+ virtual ~Cuadrado();
+ void imprimir(char,float,char,float);
+ void ObtenerCambiarC();
+ float CalcularArea(float lado){return lado*lado;}
+ float CalcularPerimetro(float lado){return lado*4;}
+ void CambiarT(float);
+ private:
+ float lado;
+};
+//cuadrado.cpp
+#include "Cuadrado.h"
+Cuadrado::Cuadrado(float )
+{
+ //ctor
+}
+Cuadrado::~Cuadrado()
+{
+ //dtor
+}
+void Cuadrado::imprimir(char c,float cor,char n,float L)
+{
+ cout<<"Atributos de CUADRADO"<<endl;
+ cout<<"COLOR: "<<c<<endl;
+ cout<<"COORDENADAS: "<<cor<<endl;
+ cout<<"NOMBRE: "<<n<<endl;
+ cout<<"LADO: "<<L<<endl;
+}
+void Cuadrado::CambiarT(float l)
+{
+ float C;
+ cout<<"cambiar tamaño: ";cin>>C;
+ if(C>0)
+ {
+ l=C*l;
+ cout<<"Nueva lado: "<<l<<endl;
+ }
+ else
+ {
+ l=l/C;
+ cout<<"Nueva lado: "<<l<<endl;
+ }
+}
