@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+//ROBERTO GUSTAVO YAVAR GUILLEN
+template <class Q>
+Q valorMenorMayor(Q x,Q y,Q z);
+int main()
+{
+float x=400,y=20,z=80;
+
+cout << valorMenorMayor(x,y,z) << endl;
+
+system("pause");
+return 0;
+}
+template <class Q>
+
+Q valorMenorMayor(Q x,Q y,Q z){
+    float mayor=0,menor=0;
+    if(x<y && x<z)
+        menor=x;
+    else if(y<x && y<z)
+        menor=y;
+    else
+        menor=z;
+    if(x>y && x>z)
+        mayor=x;
+    else if(y>x && y>z)
+        mayor=y;
+    else
+        mayor=z;
+
+   cout<<"Menor: "<<menor<<" "<<"Mayor: "<<mayor/10;
+}
