@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+//ROBERTO GUSTAVO YAVAR GUILLEN
+template <class P,class Q>
+P correo(P nombre,Q apellido);
+
+int main()
+{
+char nombre= 'r';
+string apellido= "yavar";
+
+cout << correo(nombre,apellido) << endl;
+
+system("pause");
+return 0;
+}
+template <class P,class Q>
+P correo(P nombre, Q apellido) {
+    cout<<nombre<<apellido<<"@unsa.edu.pe";
+}
