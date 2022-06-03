@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+//ROBERTO GUSTAVO YAVAR GUILLEN
+template <class P,class Q>
+P operaciones(P numero,Q nro2);
+
+int main()
+{
+int entero = 60;
+float real = -3.1454;
+
+cout << operaciones(entero,real) << endl;
+
+system("pause");
+return 0;
+}
+template <class P,class Q>
+P operaciones(P numero, Q nro2) {
+    cout<<"Suma: "<<numero+nro2<<" "<<"Resta: "<<numero-nro2<<" "<<"Multiplicacion: "<<numero*nro2<<" "<<"Division"<<numero/nro2;
+}
