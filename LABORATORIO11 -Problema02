@@ -1,0 +1,82 @@
+#include <iostream>
+#include<conio.h>
+//ROBERTO GUSTAVO YAVAR GUILLEN
+using namespace std;
+class Pila
+{
+public:
+int dato;
+Pila *siguiente;
+insertarLista(Pila *&lista,int n){
+Pila* nuevonodo = new Pila();
+nuevonodo->dato = n;
+Pila *aux1 = lista;
+Pila *aux2;
+while((aux1 != NULL ) && (aux1->dato <n)){
+aux2 = aux1;
+aux1 = aux1->siguiente;
+}
+if (lista == aux1)
+{
+lista = nuevonodo;
+}
+else{
+aux2->siguiente = nuevonodo;
+}
+nuevonodo->siguiente = aux1;
+cout<<"Elemento "<<n<<" insertado a la lista"<<endl;
+}
+mostrarLista(Pila *lista){
+Pila *actual = new Pila();
+actual = lista;
+while(actual!= NULL){
+cout<<actual->dato<<" -> ";
+actual = actual->siguiente;
+}
+}
+eliminarElemento(Pila *&lista, int n){
+if(lista != NULL){
+Pila *aux_borrar;
+Pila *anterior = NULL;
+aux_borrar = lista;
+while((aux_borrar !=NULL) && (aux_borrar->dato !=n)){
+anterior = aux_borrar;
+aux_borrar = aux_borrar->siguiente;
+}
+if(aux_borrar==NULL){
+cout<<"El elemento no existe";
+}
+else if(anterior==NULL){
+lista = lista->siguiente;
+delete aux_borrar;
+}
+else{
+anterior->siguiente= aux_borrar->siguiente;
+delete aux_borrar;
+}
+}
+}
+};
+int main()
+{
+Pila *lista = NULL;
+Pila p;
+int dato,cant,elemento;
+cout<<"Cantidad de elementos: ";cin>>cant;
+for (int i=0;i<cant;i++){
+cout<<endl;
+cout<<"Digite un numero: ";
+cin>>dato;
+p.insertarLista(lista,dato);
+cout<<endl;
+p.mostrarLista(lista);
+}
+cout<<endl;
+cout<<"Cantidad de elementos a eliminar: ";cin>>cant;
+for (int i=0;i<cant;i++){
+cout<<"Ingrese elemento para eliminar: ";cin>>elemento;
+p.eliminarElemento(lista, elemento);
+p.mostrarLista(lista);
+}
+return 0;
+}
