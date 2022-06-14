@@ -2,10 +2,13 @@
 #include<conio.h>
 //ROBERTO GUSTAVO YAVAR GUILLEN
 using namespace std;
-struct Nodo
+class Nodo
 {
+public:
 int dato;
 Nodo *siguiente;
+insertarLista(Nodo *&,int);
+mostrarLista(Nodo *);
 };
 void insertarLista(Nodo *&,int);
 void mostrarLista(Nodo *);
@@ -48,5 +51,4 @@ actual = lista;
 while(actual!= NULL){
 cout<<actual->dato<<" -> ";
 actual = actual->siguiente;
-}
 }
