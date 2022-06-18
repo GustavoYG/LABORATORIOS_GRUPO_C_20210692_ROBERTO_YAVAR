@@ -1,0 +1,74 @@
+#include <iostream>
+#include<conio.h>
+//ROBERTO GUSTAVO YAVAR GUILLEN
+using namespace std;
+class Cola
+{
+    public:
+        int dato;
+        Cola *siguiente;
+        insertarLista(Cola *&lista,int n){
+            Cola* nuevonodo = new Cola();
+            nuevonodo->dato = n;
+            Cola *aux1 = lista;
+            Cola *aux2;
+            while((aux1 != NULL ) && (aux1->dato <n)){
+                aux2 = aux1;
+                aux1 = aux1->siguiente;
+            }
+            if (lista == aux1)
+            {
+                lista = nuevonodo;
+            }
+            else{
+                aux2->siguiente = nuevonodo;
+            }
+            nuevonodo->siguiente = aux1;
+            cout<<"Elemento "<<n<<" insertado a la lista"<<endl;
+        }
+        mostrarLista(Cola *lista){
+            Cola *actual = new Cola();
+            actual = lista;
+            while(actual!= NULL){
+                cout<<actual->dato<<" -> ";
+                actual = actual->siguiente;
+            }
+        }
+        buscarElemento(Cola *&lista, int n){
+            bool band = false;
+            Cola *actual= new Cola();
+            actual = lista;
+            while((actual!=NULL) && (actual->dato <=n)){
+                if (actual->dato ==n){
+                band = true;
+                }
+            actual = actual->siguiente;
+            }
+            if(band == true){
+                cout<<"El elemento "<<n<<" Ha sido encontrado\n";
+            }else{
+                cout<<"El elemento "<<n<<" NO Ha sido encontrado\n";
+            }
+        }
+
+};
+int main()
+{
+     Cola *lista = NULL;
+     Cola p;
+     int dato,cant,elemento;
+     cout<<"Cantidad de elementos: ";cin>>cant;
+     for (int i=0;i<cant;i++){
+        cout<<endl;
+        cout<<"Digite un numero: ";
+        cin>>dato;
+        p.insertarLista(lista,dato);
+        cout<<endl;
+        p.mostrarLista(lista);
+     }
+     cout<<endl;
+    cout<<"Ingrese elemento para buscar: ";cin>>elemento;
+    p.buscarElemento(lista, elemento);
+
+ return 0;
+}
