@@ -1,0 +1,55 @@
+#include <iostream>
+#include<conio.h>
+//ROBERTO GUSTAVO YAVAR GUILLEN
+using namespace std;
+class Cola
+{
+    public:
+        int dato;
+        Cola *siguiente;
+        insertarLista(Cola *&lista,int n){
+            Cola* nuevonodo = new Cola();
+            nuevonodo->dato = n;
+            Cola *aux1 = lista;
+            Cola *aux2;
+            while((aux1 != NULL ) && (aux1->dato <n)){
+                aux2 = aux1;
+                aux1 = aux1->siguiente;
+            }
+            if (lista == aux1)
+            {
+                lista = nuevonodo;
+            }
+            else{
+                aux2->siguiente = nuevonodo;
+            }
+            nuevonodo->siguiente = aux1;
+            cout<<"Elemento "<<n<<" insertado a la lista"<<endl;
+        }
+        mostrarLista(Cola *lista){
+            Cola *actual = new Cola();
+            actual = lista;
+            while(actual!= NULL){
+                cout<<actual->dato<<" -> ";
+                actual = actual->siguiente;
+            }
+        }
+
+};
+int main()
+{
+     Cola *lista = NULL;
+     Cola p;
+     int dato,cant;
+     cout<<"Cantidad de elementos: ";cin>>cant;
+     for (int i=0;i<cant;i++){
+        cout<<endl;
+        cout<<"Digite un numero: ";
+        cin>>dato;
+        p.insertarLista(lista,dato);
+        cout<<endl;
+        p.mostrarLista(lista);
+     }
+
+ return 0;
+}
