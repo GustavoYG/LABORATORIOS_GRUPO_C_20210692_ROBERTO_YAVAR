@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+//ROBERTO GUSTAVO YAVAR GUILLEN
+struct persona{
+        char nombre[15];
+        int dia;
+        int mes;
+        int anio;
+};
+
+int main(){
+    int n;
+    cout<<"Ingrese cantidad de personas: ";cin>>n;
+    persona amigo[n];
+    for (int i = 0; i < n; i++){
+        cout <<"Escriba el Nombre "<<i+1<<":";
+        cin >> amigo[i].nombre;
+
+        cout <<"\nEscriba dia de nacimiento "<<i+1<<":";
+        cin >> amigo[i].dia;
+
+        cout <<"\nEscriba mes de nacimiento "<<i+1<<":";
+        cin >> amigo[i].mes;
+
+        cout <<"\nEscriba el año de nacimiento "<<i+1<<":";
+        cin >> amigo[i].anio;
+        cout <<endl;
+    }
+
+    cout<<"Pesonas que cumplen años este mes: \n\n";
+    for (int i = 0; i < n; i++){
+        if(amigo[i].mes==6)
+        cout<<"\t"<<amigo[i].nombre<<"\n\n";
+   }
+
+   return 0;
+}
