@@ -1,0 +1,52 @@
+#include <iostream>
+using namespace std;
+//ROBERTO GUSTAVO YAVAR GUILLEN
+struct persona{
+        char nombre[15];
+        char sexo[15];
+        int sueldo;
+};
+void MostrarPersonas(persona[],int n);
+void comparar(persona[],int n);
+int main(){
+    int n;
+    cout<<"Cantidad de personas: ";cin>>n;
+    persona empleado[n];
+    MostrarPersonas(empleado,n);
+    comparar(empleado,n);
+
+   return 0;
+}
+void MostrarPersonas(persona persona[],int n){
+
+    for (int i = 0; i < n; i++){
+        cout <<"Escriba el Nombre de "<<i+1<<":";
+        cin >> persona[i].nombre;
+
+        cout <<"\nEscriba el sexo de "<<i+1<<":";
+        cin >> persona[i].sexo;
+
+        cout <<"\nEscriba el sueldo de "<<i+1<<":";
+        cin >> persona[i].sueldo;
+        cout <<endl;
+    }
+}
+void comparar(persona persona[],int n)
+{
+    int menor=99999999,mayor=0;
+    for (int i = 0; i < n; i++){
+        if(persona[i].sueldo>mayor){
+        mayor=persona[i].sueldo;
+        }
+    }
+    cout<<"Mayor sueldo: \n\n";
+    cout<<"S/"<<mayor;
+    for (int i = 0; i < n; i++){
+        if(persona[i].sueldo<menor){
+        menor=persona[i].sueldo;
+        }
+    }
+    cout<<endl;
+    cout<<"Menor sueldo: \n\n";
+    cout<<"S/"<<menor;
+}
