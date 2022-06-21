@@ -3,42 +3,43 @@ using namespace std;
 //ROBERTO GUSTAVO YAVAR GUILLEN
 struct persona{
         char nombre[15];
-        char grupo[15];
-        int notaf1;
-        int notaf2;
-        int notaf3;
-        int notapf;
+        int edad;
+        float talla;
 };
-
+void MostrarPersonas(persona[],int n);
+void comparar(persona[],int n);
 int main(){
-    int n,notaf;
-    cout<<"Cantidad de alumnos: ";cin>>n;
-    persona alumno[n];
-    for (int i = 0; i < n; i++){
-        cout <<"Escriba el Nombre "<<i+1<<":";
-        cin >> alumno[i].nombre;
-
-        cout <<"\nEscriba nota fase 1 "<<":";
-        cin >> alumno[i].notaf1;
-
-        cout <<"\nEscriba nota fase 2 "<<":";
-        cin >> alumno[i].notaf2;
-
-        cout <<"\nEscriba nota fase 3 "<<":";
-        cin >> alumno[i].notaf3;
-
-        cout <<"\nEscriba nota proyecto final "<<":";
-        cin >> alumno[i].notapf;
-        cout <<endl;
-    }
-
-    cout<<"Registro de Alumnos: \n\n";
-
-    for (int i = 0; i < n; i++){
-        notaf=((alumno[i].notaf1*0.15)+(alumno[i].notaf2*0.20)+(alumno[i].notaf3*0.25)+(alumno[i].notapf*0.40));
-        cout<<"\t"<<alumno[i].nombre;
-        cout<<"\t"<<"Nota final: "<<notaf<<"\n";
-   }
+    int n;
+    cout<<"Cantidad de personas: ";cin>>n;
+    persona amigo[n];
+    MostrarPersonas(amigo,n);
+    comparar(amigo,n);
 
    return 0;
+}
+void MostrarPersonas(persona persona[],int n){
+
+    for (int i = 0; i < n; i++){
+        cout <<"Escriba el Nombre "<<i+1<<":";
+        cin >> persona[i].nombre;
+
+        cout <<"\nEscriba la edad de "<<i+1<<":";
+        cin >> persona[i].edad;
+
+        cout <<"\nEscriba talla de "<<i+1<<":";
+        cin >> persona[i].talla;
+        cout <<endl;
+    }
+}
+void comparar(persona persona[],int n)
+{
+    cout<<"Registro de personas menores de 20 y con talla mayor a 1.70mts: \n\n";
+
+    for (int i = 0; i < n; i++){
+        if(persona[i].edad<20 && persona[i].talla>1.70){
+        cout<<"\t"<<persona[i].nombre;
+        cout<<"\t"<<persona[i].edad;
+        cout<<"\t"<<persona[i].talla<<"\n\n";
+        }
+    }
 }
