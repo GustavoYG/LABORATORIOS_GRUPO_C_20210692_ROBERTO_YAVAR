@@ -1,0 +1,172 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+class IBuilder {
+public:
+    virtual ~IBuilder() {}
+    virtual void ProducirParteA() const = 0;
+    virtual void ProducirParteB() const = 0;
+    virtual void ProducirParteC() const = 0;
+    virtual void ProducirParteD() const = 0;
+    virtual void ProducirParteE() const = 0;
+    virtual void ProducirParteF() const = 0;
+    virtual void Colores() const = 0;
+};
+
+
+class Producto1 {
+public:
+    vector<std::string> componentes;
+    void ListaComp()const {
+        cout << "Componentes : ";
+        for (size_t i = 0; i < componentes.size(); i++) {
+            if (componentes[i] == componentes.back()) {
+                cout << componentes[i];
+            } else {
+                cout << componentes[i] << ", ";
+            }
+        }
+        cout << "\n\n";
+    }
+};
+class Producto2 {
+public:
+    string color;
+    vector<std::string> comp;
+    void ListaComp()const {
+        cout << "Colores : ";
+        for (size_t i = 0; i < comp.size(); i++){
+                if (comp[i] == comp.back()) {
+                    cout << comp[i];
+                } else {
+                    cout << comp[i] << ", ";
+                }
+        }
+        cout << "\n\n";
+    }
+};
+class BuilderEspecifico : public IBuilder {
+private:
+    Producto1* product;
+    Producto2* colors;
+public:
+    BuilderEspecifico() {
+    this->Reset();
+    }
+    ~BuilderEspecifico() {
+    delete product;
+    }
+    void Reset() {
+        this->product = new Producto1();
+    }
+    void ProducirParteA()const override {
+        this->product->componentes.push_back("LLanta");
+    }
+    void ProducirParteB()const override {
+        this->product->componentes.push_back("Timon");
+    }
+    void ProducirParteC()const override {
+        this->product->componentes.push_back("Asientos");
+    }
+    void ProducirParteD()const override {
+        this->product->componentes.push_back("Motor");
+    }
+    void ProducirParteE()const override {
+        this->product->componentes.push_back("Espejos");
+    }
+    void ProducirParteF()const override {
+        this->product->componentes.push_back("Vidrios");
+    }
+    void Colores()const override{
+        string color;
+        for (int i=0;i<this->colors->comp.size();i++){
+            cout<<"COLOR: ";cin>>color;
+            this->colors->comp.push_back(color);
+        }
+    }
+    Producto1* GetProducto() {
+    Producto1* resultado = this->product;
+    this->Reset();
+    return resultado;
+    }
+    Producto2* GetProd() {
+    Producto2* resultado = this->colors;
+    this->Reset();
+    return resultado;
+    }
+
+};
+class Director {
+private:
+    IBuilder* builder;
+public:
+    void set_builder(IBuilder* builder) {
+    this->builder = builder;
+    }
+    void BuildProductoMin() {
+    this->builder->ProducirParteA();
+    }
+    void BuildProductoCompleto() {
+    this->builder->ProducirParteA();
+    this->builder->ProducirParteB();
+    this->builder->ProducirParteC();
+    this->builder->ProducirParteD();
+    this->builder->ProducirParteE();
+    this->builder->ProducirParteF();
+    }
+};
+
+void ClienteCode(Director& director)
+{
+    BuilderEspecifico* builder = new BuilderEspecifico();
+    director.set_builder(builder);
+    cout << "Producto Basico:\n";
+    director.BuildProductoMin();
+    Producto1* p = builder->GetProducto();
+    p->ListaComp();
+    delete p;
+    cout << "Producto Completo:\n";
+    director.BuildProductoCompleto();
+    p = builder->GetProducto();
+    p->ListaComp();
+    delete p;
+    ////
+    int opc;
+    string color;
+    cout<<"Eliga producto (1).Basico (2).Completo ";cin>>opc;
+    if(opc==1){
+        director.BuildProductoMin();
+        Producto1* p = builder->GetProducto();
+        p->ListaComp();
+        Producto2* g = builder->GetProd();
+        builder->Colores();
+        g= builder->GetProd();
+        g->ListaComp();
+        delete p;
+        delete g;
+    }
+    else if(opc==2){
+        director.BuildProductoCompleto();
+        Producto1* p = builder->GetProducto();
+        p->ListaComp();
+        Producto2* g = builder->GetProd();
+       builder->Colores();
+        g= builder->GetProd();
+        g->ListaComp();
+        delete p;
+        delete g;
+    }
+
+    delete p;
+    delete builder;
+}
+
+int main() {
+    Director* director = new Director();
+
+    ClienteCode(*director);
+    //
+
+    delete director;
+    return 0;
+}
