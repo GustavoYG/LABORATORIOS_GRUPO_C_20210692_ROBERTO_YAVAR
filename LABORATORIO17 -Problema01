@@ -1,0 +1,135 @@
+//dos opciones
+//YAVAR GUILLEN ROBERTO GUSTAVO
+/*
+#include <iostream>
+using namespace std;
+template <class T, class U>
+    class Calculadora {
+    T num1;
+    U num2;
+    public:
+    Calculadora()
+    {
+        cout<<"Operaciones"<<endl;
+        cout<<"Ingrese valores:";cin>>num1>>num2;
+        cout <<"Suma: " << num1+num2<< endl;
+        cout <<"Resta: "<< num1-num2<< endl;
+        cout <<"Producto: "<< num1*num2<< endl;
+        cout <<"Division: "<< num1/num2 << endl;
+    }
+};
+int main()
+{
+    Calculadora<int , int> a;
+    Calculadora<int, double> b;
+    system("pause");
+    return 0;
+}
+*/
+/*
+#include <iostream>
+using namespace std;
+template <typename T>
+class Calculadora
+{
+private:
+    T num1, num2;
+
+public:
+    Calculadora(T n1, T n2) : num1(n1), num2(n2){};
+    void operaciones();
+    T suma();
+    T resta();
+    T producto();
+    T division();
+};
+
+// Definición
+template <typename T>
+void Calculadora<T>::operaciones()
+{
+    cout << "Numeros: " << num1 << " y " << num2 << std::endl;
+    cout << num1 << " + " << num2 << " = " << suma() << std::endl;
+    cout << num1 << " - " << num2 << " = " << resta() << std::endl;
+    cout << num1 << " * " << num2 << " = " << producto() << std::endl;
+    cout << num1 << " / " << num2 << " = " << division() << std::endl;
+}
+
+template <typename T>
+T Calculadora<T>::suma() { return num1 + num2; }
+
+template <typename T>
+T Calculadora<T>::resta() { return num1 - num2; }
+
+template <typename T>
+T Calculadora<T>::producto() { return num1 * num2; }
+
+template <typename T>
+T Calculadora<T>::division() { return num1 / num2; }
+
+int main()
+{
+    Calculadora<int> a(3, 2);
+    Calculadora<float> b(1.6, 2.6);
+
+    cout << "Operaciones enteras" << endl;
+    a.operaciones();
+
+    cout << "Operaciones flotantes" << endl;
+    b.operaciones();
+
+    return 0;
+}
+*/
+/*
+#include <iostream>
+using namespace std;
+template <typename T>
+class Nodo {
+    public:
+    T dato;
+    Nodo *der;
+    Nodo *izq;
+    *crearNodo(int);
+    void insertarNodo(Nodo *&,int);
+};
+template <typename T>
+Nodo<T>::*crearNodo(int n){
+
+    Nodo<T> *nuevoNodo = new Nodo<T>;
+
+    nuevoNodo->dato =n;
+    nuevoNodo->der = NULL;
+    nuevoNodo->izq = NULL;
+
+    return nuevoNodo;
+}
+template <typename T>
+void Nodo<T>::insertarNodo(Nodo *&arbol,int n){
+
+        if(arbol == NULL){
+            Nodo<int> *nuevoNodo = crearNodo(n);
+            arbol =nuevoNodo;
+        }
+        else{
+            T valorRaiz = arbol->dato;
+            if(n < valorRaiz){
+                insertarNodo(arbol->izq,n);
+            }
+            else{
+                insertarNodo(arbol->der,n);
+            }
+        }
+    }
+int main()
+{
+    //Nodo prueba;
+    int dato;
+    Nodo<int> *arbol = NULL;
+    for(int i=1;i<100;i++){
+        cout<<"Dato "<< i <<": ";cin>>dato;
+        Nodo<int> prueba;
+        prueba.insertarNodo(arbol,dato);
+    }
+}
+*/
