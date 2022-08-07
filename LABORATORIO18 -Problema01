@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+//ROBERTO GUSTAVO YAVAR GUILLEN
+template<int N>
+struct sumaD{
+	enum{
+		value = N%10 + sumaD<N/10>::value
+	};
+};
+
+template <>
+struct sumaD<0>
+{
+	enum{ value = 0 };
+};
+
+int main()
+{
+	cout<<sumaD<123>::value;
+	return 0;
+}
