@@ -1,0 +1,41 @@
+//SIN TERMINAR
+#include <iostream>
+using namespace std;
+
+template<int N>
+struct convertirHexa{
+
+	enum
+	{ value =  };
+};
+template <>
+struct convertirHexa<10>
+{
+	enum{ value = "A"};
+};
+template <>
+struct convertirHexa<11>
+{
+	enum{ value = "B"};
+};
+struct convertirHexa<12>
+{
+	enum{ value = "C"};
+};
+struct convertirHexa<13>
+{
+	enum{ value = "D"};
+};
+struct convertirHexa<14>
+{
+	enum{ value = "E"};
+};
+struct convertirHexa<15>
+{
+	enum{ value = "F"};
+};
+
+int main(){
+	cout<<convertirHexa<10>::value;
+	return 0;
+}
