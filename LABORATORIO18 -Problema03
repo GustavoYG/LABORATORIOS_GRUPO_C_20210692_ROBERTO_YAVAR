@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+
+template<int N, int M>
+struct potencia {
+
+	enum{ value = N * potencia<N,M-1>::value };
+};
+
+template<int N>
+struct potencia<N,0>
+{
+	enum{ value = 1 };
+};
+
+int main()
+{
+	cout<<potencia<2,8>::value;
+	return 0;
+}
