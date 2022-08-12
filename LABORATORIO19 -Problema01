@@ -1,0 +1,40 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+//ROBERTO GUSTAVO YAVAR GUILLEN
+class ERLsimple {
+public:
+    float operator()() {
+        vector<int> x{1,2,2};
+        vector<int> y{2,3,4};
+        int sumax;
+        for(int i=0; i<x.size();i++){
+            sumax= sumax + x[i];
+        }
+        int sumay;
+        for(int i=0; i<y.size();i++){
+            sumay= sumay + y[i];
+        }
+        int sumaxy;
+        for(int i=0; i<x.size();i++){
+            sumaxy= sumaxy + (x[i]*y[i]);
+        }
+        int sumax2;
+        for(int i=0; i<x.size();i++){
+            sumax2= sumax2 + (x[i]*x[i]);
+        }
+        float m= (x.size()*sumaxy)-(sumax*sumay)/(x.size()*sumax2)-(sumax*sumax);
+        float b= (sumay/x.size())-(m*(sumax/x.size()));
+        float rpta;
+        cout<<"y= "<<m<<"x"<<" +"<<b;
+        return m,b;
+    }
+};
+
+int main()
+{
+    ERLsimple obj;
+    int prueba = obj();
+    cout << prueba << endl;
+    return 0;
+}
